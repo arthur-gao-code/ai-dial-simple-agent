@@ -10,7 +10,7 @@ services:
       - GENERATE_USERS=true
       - USER_COUNT=1000
     volumes:
-      - ./data:/app/data  # Optional: persist database
+      - data:/app/data  # Optional: persist database
     restart: unless-stopped
     healthcheck:
       test: ["CMD-SHELL", "curl -f http://localhost:8000/health || exit 1"]
@@ -18,3 +18,6 @@ services:
       timeout: 10s
       retries: 3
       start_period: 40s
+
+volumes:
+  data:
